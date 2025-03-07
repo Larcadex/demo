@@ -148,3 +148,4 @@ C:\Users\aswag\source\repos\sampledemo\sampledemo\bin\Debug\net8.0\ru\Microsoft.
 C:\Users\aswag\source\repos\sampledemo\sampledemo\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\aswag\source\repos\sampledemo\sampledemo\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\aswag\source\repos\sampledemo\sampledemo\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\aswag\source\repos\sampledemo\sampledemo\obj\Debug\net8.0\sampledemo.sourcelink.json

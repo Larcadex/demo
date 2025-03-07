@@ -12,15 +12,16 @@ namespace sampledemo
     {
         public ObservableCollection<ProductPartnerPresenter> ProductHistory { get; set; }
 
+        public ProductsWindow()
+        {
+
+        }
+
         public ProductsWindow(Partner partner)
         {
             InitializeComponent();
             DataContext = this;
             LoadProductHistory(partner);
-        }
-        public ProductsWindow()
-        {
-            
         }
 
         private void LoadProductHistory(Partner partner)
@@ -42,11 +43,6 @@ namespace sampledemo
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            ShowMainWindow();
-        }
-
-        private void ShowMainWindow()
         {
             var mainWindow = new MainWindow();
             mainWindow.Show();

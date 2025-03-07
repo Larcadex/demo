@@ -20,14 +20,18 @@ namespace sampledemo
 
         private void AddPartner_Click(object sender, RoutedEventArgs e)
         {
-            OpenEditWindow(null);
+            var partnerWindow = new EditWindow(null);
+            partnerWindow.Show();
+            this.Close();
         }
 
         private void EditPartner_Click(object sender, RoutedEventArgs e)
         {
             if (PartnerListBox.SelectedItem is PartnerPresenter selectedPartner)
             {
-                OpenEditWindow(selectedPartner);
+                var partnerWindow = new EditWindow(selectedPartner);
+                partnerWindow.Show();
+                this.Close();
             }
         }
 
@@ -70,46 +74,39 @@ namespace sampledemo
             PartnerListBox.ItemsSource = DisplayList;
         }
 
-        private void OpenEditWindow(PartnerPresenter partner)
+        public class PartnerPresenter : Partner
         {
-            var partnerWindow = new EditWindow(partner);
-            partnerWindow.Show();
-            this.Close();
-        }
-    }
+            public string PartnerTypeName { get; set; }
 
-    public class PartnerPresenter : Partner
-    {
-        public string PartnerTypeName { get; set; }
+            private int? _countSum;
+            public int DiscountPercentage { get; private set; }
 
-        private int? _countSum;
-        public int DiscountPercentage { get; private set; }
-
-        public int? CountSum
-        {
-            get => _countSum;
-            set
+            public int? CountSum
             {
-                _countSum = value;
-                CalculateDiscountPercentage();
-            }
-        }
-
-        private void CalculateDiscountPercentage()
-        {
-            if (_countSum.HasValue)
-            {
-                DiscountPercentage = _countSum switch
+                get => _countSum;
+                set
                 {
-                    < 10000 => 0,
-                    < 50000 => 5,
-                    < 300000 => 10,
-                    _ => 15
-                };
+                    _countSum = value;
+                    CalculateDiscountPercentage();
+                }
             }
-            else
+
+            private void CalculateDiscountPercentage()
             {
-                DiscountPercentage = 0;
+                if (_countSum.HasValue)
+                {
+                    DiscountPercentage = _countSum switch
+                    {
+                        < 10000 => 0,
+                        < 50000 => 5,
+                        < 300000 => 10,
+                        _ => 15
+                    };
+                }
+                else
+                {
+                    DiscountPercentage = 0;
+                }
             }
         }
     }
