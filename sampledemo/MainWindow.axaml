@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:CompileBindings="False"
+        x:Class="sampledemo.MainWindow"
+        Title="Главное окно"
+        Width="800" Height="450"
+        WindowStartupLocation="CenterScreen">
+	<DockPanel>
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+			<Button Name="AddPartnerButton" Content="Добавить партнера" Click="AddPartner_Click" Margin="5"/>
+			<Button Name="EditPartnerButton" Content="Редактировать партнера" Click="EditPartner_Click" Margin="5" IsEnabled="False"/>
+			<Button Name="ShowHistoryButton" Content="Показать историю" Click="ShowHistory_Click" Margin="5" IsEnabled="False"/>
+		</StackPanel>
+		<Border Name="MainPanel">
+			<ListBox Name="PartnerListBox" SelectionChanged="PartnerListBox_SelectionChanged">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<Border BorderBrush="Gray" BorderThickness="1" Padding="20">
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="Auto"/>
+								</Grid.ColumnDefinitions>
+								<StackPanel Orientation="Vertical" Spacing="5">
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding PartnerTypeName}" FontWeight="Bold"/>
+										<TextBlock Text="{Binding Name, StringFormat='| {0}'}" FontWeight="Bold" Margin="3,0,0,0" />
+									</StackPanel>
+									<StackPanel Orientation="Vertical" Spacing="5">
+										<TextBlock Text="{Binding Director}" />
+										<TextBlock Text="{Binding Phone, StringFormat='+7 {0}'}" />
+										<TextBlock Text="{Binding Rate, StringFormat='Рейтинг: {0}'}" />
+									</StackPanel>
+								</StackPanel>
+								<TextBlock Text="{Binding DiscountPercentage, StringFormat=' {0}%'}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0" />
+							</Grid>
+						</Border>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</Border>
+	</DockPanel>
+</Window>
