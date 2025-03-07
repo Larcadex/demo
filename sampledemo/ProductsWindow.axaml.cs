@@ -20,7 +20,6 @@ namespace sampledemo
         public ProductsWindow(Partner partner)
         {
             InitializeComponent();
-            DataContext = this;
             LoadProductHistory(partner);
         }
 
